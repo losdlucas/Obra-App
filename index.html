@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #dbae4c, #8323f9, #72328b);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+            font-family: Arial, sans-serif;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            width: 320px;
+            color: white;
+            text-align: center;
+        }
+
+        .logo {
+            width: 100px;
+            height: auto;
+            margin: 0 auto 20px auto;
+            display: block;
+        }
+
+        .login-container label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+
+        .login-container input[type="text"]::placeholder,
+        .login-container input[type="password"]::placeholder {
+            color: #ddd;
+        }
+
+        .login-container input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, )
+          
+        }
+
+        .login-container input[type="submit"]:hover {
+            background: color-mix(in srgb, color percentage, color percentage)
+        }
+
+        .login-container .esqueci-senha {
+            margin-top: 10px;
+            display: block;
+            color: #0e0d08;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .login-container .esqueci-senha:hover {
+            color: #1a1717;
+            text-decoration: underline;
+        }
+
+        .success {
+            border-color: lightgreen;
+            background-color: rgba(0, 255, 0, 0.1);
+            color: lightgreen;
+        }
+
+        .error {
+            border-color: red;
+            background-color: rgba(255, 0, 0, 0.1);
+            color: red;
+        }
+
+        #mensagem {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <form class="login-container" onsubmit="return validarLogin();">
+        <img src="20004bf8e4ac45eb9d19c7892d6b0d68.webp" alt="Logo" class="logo">
+
+        <label for="usuario">Usuário:</label>
+        <input type="text" id="usuario" name="usuario" placeholder="Digite seu usuário">
+
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" placeholder="Digite sua senha">
+
+        <input type="submit" value="Login">
+
+        <!-- Link para "Esqueci minha senha" -->
+        <a href="#" class="esqueci-senha" onclick="alert('Função de recuperação ainda não implementada.')">Esqueci minha senha</a>
+
+        <div id="mensagem"></div>
+    </form>
+
+    <script>
+        function validarLogin() {
+            const usuario = document.getElementById("usuario");
+            const senha = document.getElementById("senha");
+            const mensagem = document.getElementById("mensagem");
+
+            const usuarioCorreto = "testar1234";
+            const senhaCorreta = "teste123";
+
+            if (usuario.value === usuarioCorreto && senha.value === senhaCorreta) {
+                usuario.className = "success";
+                senha.className = "success";
+                mensagem.textContent = "Logado com sucesso!";
+                mensagem.style.color = "lightgreen";
+            } else {
+                if (usuario.value !== usuarioCorreto) {
+                    usuario.className = "error";
+                } else {
+                    usuario.className = "success";
+                }
+
+                if (senha.value !== senhaCorreta) {
+                    senha.className = "error";
+                } else {
+                    senha.className = "success";
+                }
+
+                mensagem.textContent = "Usuário ou senha incorretos!";
+                mensagem.style.color = "red";
+            }
+            return false; 
+        }
+    </script>
+</body>
+</html>
